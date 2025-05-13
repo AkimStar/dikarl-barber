@@ -11,28 +11,31 @@ if (typeof window !== 'undefined') {
 }
 
 export function ServicesSection() {
-  const sectionRef = useRef(null);
-  const cardsRef = useRef(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const cardsRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const section = sectionRef.current;
     const cards = cardsRef.current;
 
-    if (section && cards) {
-      gsap.fromTo(
-        section.querySelector('h2'),
-        { opacity: 0, y: 30 },
-        { 
-          opacity: 1, 
-          y: 0, 
-          duration: 0.8,
-          scrollTrigger: {
-            trigger: section,
-            start: "top 80%",
-            toggleActions: "play none none reverse"
+    if (section instanceof HTMLElement && cards instanceof HTMLDivElement) {
+      const heading = section.querySelector('h2');
+      if (heading) {
+        gsap.fromTo(
+          heading,
+          { opacity: 0, y: 30 },
+          { 
+            opacity: 1, 
+            y: 0, 
+            duration: 0.8,
+            scrollTrigger: {
+              trigger: section,
+              start: "top 80%",
+              toggleActions: "play none none reverse"
+            }
           }
-        }
-      );
+        );
+      }
 
       gsap.fromTo(
         cards.children,
