@@ -62,7 +62,7 @@ export function Footer() {
             <ul className="space-y-3 text-gray-400">
               <li>ул. Константин Фотинов 12, Варна</li>
               <li>(+359) 888 123 456</li>
-              <li>hello@fadedistrict.bg</li>
+              <li>info@fadedistrictvarna.com</li>
             </ul>
             <button className="mt-6 text-[#FF5C1B] border border-[#FF5C1B]/30 rounded-md px-4 py-2 hover:bg-[#FF5C1B]/10 transition-colors">
               Свържи се с нас

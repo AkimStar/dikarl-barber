@@ -42,7 +42,7 @@ export function HeroSection() {
         <div className="max-w-3xl">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
             Стилът не е <span className="text-[#FF5C1B]">случайност</span> — <br />
-            той започва от <span className="text-[#FF5C1B]">прическата</span>
+            той започва от <span className="text-[#FF5C1B]">прическата.</span>
           </h1>
           
           <p className="text-lg md:text-xl text-gray-300 mb-8">

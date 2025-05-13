@@ -111,7 +111,7 @@ export function ContactSection() {
               </div>
               
               <Button className="w-full bg-[#FF5C1B] hover:bg-[#FF5C1B]/80 text-white py-6">
-                Запази час онлайн
+                Запази час
               </Button>
             </div>
           </Card>

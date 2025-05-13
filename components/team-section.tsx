@@ -60,7 +60,7 @@ export function TeamSection() {
     {
       name: 'Иван Иванов',
       position: 'Съсобственик',
-      image: 'https://images.pexels.com/photos/4947279/pexels-photo-4947279.jpeg',
+      image: '/barber1.png',
       specialties: ['Fade майстор', 'Стилист брада', 'Класически стилове'],
       social: {
         facebook: 'https://facebook.com/ivan.ivanov',
@@ -70,7 +70,7 @@ export function TeamSection() {
     {
       name: 'Калин Бочев',
       position: 'Съсобственик',
-      image: 'https://images.pexels.com/photos/2076930/pexels-photo-2076930.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      image: '/barber2.png',
       specialties: ['Skin Fade', 'Модерни прически', 'Хот тауел шейвинг'],
       social: {
         facebook: 'https://facebook.com/kalin.bochev',
