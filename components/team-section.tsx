@@ -12,9 +12,9 @@ if (typeof window !== 'undefined') {
 }
 
 export function TeamSection() {
-  const sectionRef = useRef(null);
-  const cardsRef = useRef(null);
-  const textRef = useRef(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const cardsRef = useRef<HTMLDivElement | null>(null);
+  const textRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -22,6 +22,9 @@ export function TeamSection() {
     const text = textRef.current;
 
     if (section && cards && text) {
+      const titleElement = section.querySelector('h2');
+      if (!titleElement) return;
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
@@ -31,7 +34,7 @@ export function TeamSection() {
       });
 
       tl.fromTo(
-        section.querySelector('h2'),
+        titleElement,
         { opacity: 0, y: 30 },
         { opacity: 1, y: 0, duration: 0.8 }
       )
