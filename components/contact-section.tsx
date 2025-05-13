@@ -84,7 +84,7 @@ export function ContactSection() {
                 <MapPin className="h-6 w-6 text-[#FF5C1B] mr-4 mt-1" />
                 <div>
                   <h3 className="text-xl font-semibold mb-2">Адрес</h3>
-                  <p className="text-gray-300">ул. Константин Фотинов 12, Варна, България</p>
+                  <p className="text-gray-300">ул. „Славянска“ 6, 7500 Силистра</p>
                 </div>
               </div>
               
@@ -92,7 +92,7 @@ export function ContactSection() {
                 <Phone className="h-6 w-6 text-[#FF5C1B] mr-4 mt-1" />
                 <div>
                   <h3 className="text-xl font-semibold mb-2">Телефон</h3>
-                  <p className="text-gray-300">(+359) 888 123 456</p>
+                  <p className="text-gray-300">(+359) 898 589 296</p>
                 </div>
               </div>
               
@@ -122,7 +122,7 @@ export function ContactSection() {
             className="h-[400px] overflow-hidden rounded-xl shadow-xl transition-all duration-300 hover:shadow-2xl hover:shadow-[#FF5C1B]/10 hover:-translate-y-1"
           >
             <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2907.871033261403!2d27.906738015736547!3d43.20460127913856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40a4538f4c9ce6b9%3A0xce6630b262166d59!2sul.%20%22Konstantin%20Fotinov%22%2012%2C%209000%20Varna%20Center%2C%20Varna%2C%20Bulgaria!5e0!3m2!1sen!2sus!4v1656498261001!5m2!1sen!2sus" 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2864.4077597293285!2d27.257692277379782!3d44.116210922360096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b01f456b1aa931%3A0xf76e7af5bc38c444!2sDikarl%20Barbershop!5e0!3m2!1sbg!2sbg!4v1747140606331!5m2!1sbg!2sbg" 
               width="100%" 
               height="100%" 
               style={{ border: 0 }} 

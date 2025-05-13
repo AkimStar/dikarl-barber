@@ -61,8 +61,8 @@ export function TeamSection() {
 
   const team = [
     {
-      name: 'Иван Иванов',
-      position: 'Съсобственик',
+      name: 'Даниел',
+      position: 'Senior Бръснар',
       image: '/barber1.png',
       specialties: ['Fade майстор', 'Стилист брада', 'Класически стилове'],
       social: {
@@ -71,8 +71,8 @@ export function TeamSection() {
       }
     },
     {
-      name: 'Калин Бочев',
-      position: 'Съсобственик',
+      name: 'Божидар',
+      position: 'Бръснар',
       image: '/barber2.png',
       specialties: ['Skin Fade', 'Модерни прически', 'Хот тауел шейвинг'],
       social: {

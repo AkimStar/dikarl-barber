@@ -52,7 +52,7 @@ export function Navbar() {
             onClick={handleScrollToTop}
           >
             <span className="text-xl font-bold tracking-wider">
-              <span className="text-[#FF5C1B]">FADE</span> DISTRICT
+              <span className="text-[#FF5C1B]">DIKARL</span> BARBERSHOP
             </span>
           </Link>
 

@@ -91,7 +91,7 @@ export function HeroSection() {
           </h1>
           
           <p className="text-lg md:text-xl text-gray-300 mb-8">
-            Премиум грижа за истинския мъж в сърцето на Варна.
+            Премиум грижа за истинския мъж в сърцето на Силистра.
           </p>
           
           <div className="flex flex-wrap gap-4">

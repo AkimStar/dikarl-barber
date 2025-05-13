@@ -4,6 +4,7 @@ import { AboutSection } from '@/components/about-section';
 import { ServicesSection } from '@/components/services-section';
 import { WhyChooseUsSection } from '@/components/why-choose-us-section';
 import { TeamSection } from '@/components/team-section';
+import { GallerySection } from '@/components/gallery-section';
 import { PricingSection } from '@/components/pricing-section';
 import { ContactSection } from '@/components/contact-section';
 import { Footer } from '@/components/footer';
@@ -17,6 +18,7 @@ export default function Home() {
       <AboutSection />
       <ServicesSection />
       <WhyChooseUsSection />
+      <GallerySection />
       <TeamSection />
       <PricingSection />
       <ContactSection />

@@ -30,7 +30,7 @@ export function Footer() {
               onClick={handleScrollToTop}
             >
               <span className="text-xl font-bold tracking-wider">
-                <span className="text-[#FF5C1B]">FADE</span> DISTRICT
+                <span className="text-[#FF5C1B]">DIKARL</span> BARBERSHOP
               </span>
             </Link>
             <p className="text-gray-400 max-w-xs">
@@ -60,9 +60,9 @@ export function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">Контакти</h3>
             <ul className="space-y-3 text-gray-400">
-              <li>ул. Константин Фотинов 12, Варна</li>
-              <li>(+359) 888 123 456</li>
-              <li>info@fadedistrictvarna.com</li>
+              <li>ул. „Славянска“ 6, 7500 Силистра</li>
+              <li>(+359) 898 589 296</li>
+              <li>info@dikarlbarbershop.com</li>
             </ul>
             <button className="mt-6 text-[#FF5C1B] border border-[#FF5C1B]/30 rounded-md px-4 py-2 hover:bg-[#FF5C1B]/10 transition-colors">
               Свържи се с нас
@@ -72,7 +72,7 @@ export function Footer() {
         
         <div className="border-t border-white/5 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-500">
-            &copy; {new Date().getFullYear()} Fade District. Всички права запазени.
+            &copy; {new Date().getFullYear()} Dikarl Barbershop. Всички права запазени.
           </p>
           <div className="flex space-x-4 mt-4 md:mt-0">
             <Link href="#" className="text-gray-400 hover:text-[#FF5C1B] transition-colors">
