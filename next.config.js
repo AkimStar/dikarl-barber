@@ -21,6 +21,6 @@ const nextConfig = {
   // Disable static optimization to prevent hydration issues
   reactStrictMode: true,
   swcMinify: true
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
