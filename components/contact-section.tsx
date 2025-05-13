@@ -27,6 +27,8 @@ export function ContactSection() {
       const heading = section.querySelector('h2');
       if (!heading) return;
 
+      gsap.set([heading, info, map], { opacity: 0 });
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
@@ -35,21 +37,21 @@ export function ContactSection() {
         }
       });
 
-      tl.fromTo(
-        heading,
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.8 }
-      ).fromTo(
-        info,
-        { opacity: 0, x: -30 },
-        { opacity: 1, x: 0, duration: 0.8 },
-        "-=0.4"
-      ).fromTo(
-        map,
-        { opacity: 0, x: 30 },
-        { opacity: 1, x: 0, duration: 0.8 },
-        "-=0.8"
-      );
+      tl.to(heading, {
+        opacity: 1,
+        duration: 0.6,
+        ease: "power2.out"
+      })
+      .to(info, {
+        opacity: 1,
+        duration: 0.6,
+        ease: "power2.out"
+      }, "-=0.3")
+      .to(map, {
+        opacity: 1,
+        duration: 0.6,
+        ease: "power2.out"
+      }, "-=0.3");
     }, section);
 
     return () => ctx.revert();
