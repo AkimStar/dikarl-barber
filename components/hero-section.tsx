@@ -87,14 +87,14 @@ export function HeroSection() {
         <div className="max-w-3xl">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
             Стилът не е <span className="text-[#FF5C1B] inline-block hover:scale-105 transition-transform duration-300">случайност</span> — <br />
-            той започва от <span className="text-[#FF5C1B] inline-block hover:scale-105 transition-transform duration-300">прическата.</span>
+            той започва от <span className="text-[#FF5C1B] inline-block hover:scale-105 transition-transform duration-300">прическата</span>
           </h1>
           
-          <p className="text-lg md:text-xl text-gray-300 mb-8 opacity-0">
+          <p className="text-lg md:text-xl text-gray-300 mb-8">
             Премиум грижа за истинския мъж в сърцето на Варна.
           </p>
           
-          <div className="flex flex-wrap gap-4 opacity-0">
+          <div className="flex flex-wrap gap-4">
             <Button 
               className="bg-[#FF5C1B] hover:bg-[#FF5C1B]/80 text-white px-8 py-6 text-lg transform hover:scale-105 transition-all duration-300 hover:shadow-lg hover:shadow-[#FF5C1B]/20"
             >
