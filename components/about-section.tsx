@@ -95,7 +95,7 @@ export function AboutSection() {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
-          <span className="text-[#FF5C1B]">FADE DISTRICT</span> e твоето място за <span className="text-[#FF5C1B]">САМОУВЕРЕНОСТ</span>
+          <span className="text-[#FF5C1B]">DIKARL BARBERSHOP</span> e твоето място за <span className="text-[#FF5C1B]">САМОУВЕРЕНОСТ</span>
         </h2>
         
         <p className="text-gray-300 text-center max-w-3xl mx-auto mb-16 text-lg">
