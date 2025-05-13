@@ -12,16 +12,19 @@ if (typeof window !== 'undefined') {
 }
 
 export function ContactSection() {
-  const sectionRef = useRef(null);
-  const infoRef = useRef(null);
-  const mapRef = useRef(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const infoRef = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const section = sectionRef.current;
     const info = infoRef.current;
     const map = mapRef.current;
 
-    if (section && info && map) {
+    if (section && info && map && section instanceof HTMLElement) {
+      const heading = section.querySelector('h2');
+      if (!heading) return;
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
@@ -31,7 +34,7 @@ export function ContactSection() {
       });
 
       tl.fromTo(
-        section.querySelector('h2'),
+        heading,
         { opacity: 0, y: 30 },
         { opacity: 1, y: 0, duration: 0.8 }
       )
