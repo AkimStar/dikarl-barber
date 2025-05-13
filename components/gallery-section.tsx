@@ -1,6 +1,9 @@
 'use client';
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { useRef, useEffect } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { GalleryModal } from './gallery-modal';
 
 export const GallerySection = () => {
@@ -18,6 +21,46 @@ export const GallerySection = () => {
     '/5.jpg',
     '/6.jpg',
   ];
+
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const subheadingRef = useRef<HTMLParagraphElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    gsap.registerPlugin(ScrollTrigger);
+    const section = sectionRef.current;
+    const heading = headingRef.current;
+    const subheading = subheadingRef.current;
+    const grid = gridRef.current;
+    if (!section || !heading || !subheading || !grid) return;
+
+    gsap.set([heading, subheading], { opacity: 0, y: 40 });
+    gsap.set(grid.children, { opacity: 0, y: 60 });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: 'top 80%',
+        toggleActions: 'play none none reverse',
+      },
+    });
+    tl.to(heading, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' })
+      .to(subheading, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, '-=0.3')
+      .to(grid.children, {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        stagger: 0.12,
+        ease: 'power2.out',
+      }, '-=0.2');
+
+    return () => {
+      tl.scrollTrigger && tl.scrollTrigger.kill();
+      tl.kill();
+    };
+  }, []);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
 
@@ -36,17 +79,16 @@ export const GallerySection = () => {
   };
 
   return (
-    <section id="gallery" className="py-16 px-4 md:px-8 bg-[#18181B]">
+    <section id="gallery" className="py-16 px-4 md:px-8 bg-[#18181B]" ref={sectionRef}>
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold mb-2 text-center tracking-wide font-sans" style={{ color: '#FF5C1B' }}>Галерия</h2>
-        <p className="text-lg md:text-xl text-center mb-8 text-gray-300 font-sans">Разгледайте атмосферата в салона ни. Кликнете върху снимка за уголемяване.</p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-10">
+        <h2 ref={headingRef} className="text-3xl md:text-4xl font-bold mb-2 text-center tracking-wide font-sans" style={{ color: '#FF5C1B' }}>Галерия</h2>
+        <p ref={subheadingRef} className="text-lg md:text-xl text-center mb-8 text-gray-300 font-sans">Разгледайте атмосферата в салона ни. Кликнете върху снимка за уголемяване.</p>
+        <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-10">
 
           {images.map((src, idx) => (
             <div
               key={idx}
-              className="overflow-hidden rounded-xl shadow-2xl cursor-pointer group animate-fade-in transform transition-all duration-500 hover:scale-105 hover:shadow-orange-400/60 hover:z-10 bg-[#23232a]"
-              style={{ animationDelay: `${idx * 0.12 + 0.2}s`, animationFillMode: 'forwards' }}
+              className="overflow-hidden rounded-xl shadow-2xl cursor-pointer group transform transition-all duration-500 hover:scale-105 hover:shadow-orange-400/60 hover:z-10 bg-[#23232a]"
               onClick={() => handleImageClick(idx)}
             >
               <div className="relative w-full aspect-[4/3] md:aspect-[4/3] min-h-[320px] md:min-h-[400px]">
