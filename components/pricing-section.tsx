@@ -19,17 +19,16 @@ export function PricingSection() {
   useEffect(() => {
     const section = sectionRef.current;
     const cards = cardsRef.current;
-    const heading = section?.querySelector('h2');
 
-    if (section && cards && heading) {
-      // Reset any existing animations
-      gsap.killTweensOf([heading, cards.children]);
-      
-      // Set initial states
+    if (!section || !cards) return;
+
+    const ctx = gsap.context(() => {
+      const heading = section.querySelector('h2');
+      if (!heading) return;
+
       gsap.set(heading, { opacity: 0, y: 20 });
       gsap.set(cards.children, { opacity: 0, y: 30 });
 
-      // Create animation timeline
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
@@ -44,21 +43,16 @@ export function PricingSection() {
         y: 0,
         duration: 0.6,
         ease: "power2.out"
-      })
-      .to(cards.children, {
+      }).to(cards.children, {
         opacity: 1,
         y: 0,
         duration: 0.6,
         stagger: 0.15,
         ease: "power2.out"
       }, "-=0.3");
-    }
+    }, section);
 
-    return () => {
-      if (typeof window !== 'undefined') {
-        ScrollTrigger.getAll().forEach(t => t.kill());
-      }
-    };
+    return () => ctx.revert();
   }, []);
 
   const pricingPlans = [

@@ -18,8 +18,8 @@ function CountUp({ end, suffix = '' }: { end: number; suffix?: string }) {
     countRef.current = 0;
     setCount(0);
     
-    const duration = 3000; // 3 seconds (increased from 2)
-    const frameDuration = 1000 / 30; // 30fps (reduced from 60 for smoother animation)
+    const duration = 3000;
+    const frameDuration = 1000 / 30;
     const totalFrames = Math.round(duration / frameDuration);
     let frame = 0;
 
@@ -50,9 +50,13 @@ export function AboutSection() {
   useEffect(() => {
     const section = sectionRef.current;
     const stats = statsRef.current;
-    const heading = section?.querySelector('h2');
 
-    if (section && stats && heading) {
+    if (!section || !stats) return;
+
+    const ctx = gsap.context(() => {
+      const heading = section.querySelector('h2');
+      if (!heading) return;
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
@@ -66,20 +70,15 @@ export function AboutSection() {
         heading,
         { opacity: 0, y: 30 },
         { opacity: 1, y: 0, duration: 0.6 }
-      )
-      .fromTo(
+      ).fromTo(
         stats.children,
         { opacity: 0, y: 20 },
         { opacity: 1, y: 0, stagger: 0.2, duration: 0.4 },
         "-=0.2"
       );
-    }
+    }, section);
 
-    return () => {
-      if (typeof window !== 'undefined') {
-        ScrollTrigger.getAll().forEach(t => t.kill());
-      }
-    };
+    return () => ctx.revert();
   }, []);
 
   const stats = [

@@ -21,7 +21,9 @@ export function ContactSection() {
     const info = infoRef.current;
     const map = mapRef.current;
 
-    if (section && info && map && section instanceof HTMLElement) {
+    if (!section || !info || !map) return;
+
+    const ctx = gsap.context(() => {
       const heading = section.querySelector('h2');
       if (!heading) return;
 
@@ -37,26 +39,20 @@ export function ContactSection() {
         heading,
         { opacity: 0, y: 30 },
         { opacity: 1, y: 0, duration: 0.8 }
-      )
-      .fromTo(
+      ).fromTo(
         info,
         { opacity: 0, x: -30 },
         { opacity: 1, x: 0, duration: 0.8 },
         "-=0.4"
-      )
-      .fromTo(
+      ).fromTo(
         map,
         { opacity: 0, x: 30 },
         { opacity: 1, x: 0, duration: 0.8 },
         "-=0.8"
       );
-    }
+    }, section);
 
-    return () => {
-      if (typeof window !== 'undefined') {
-        ScrollTrigger.getAll().forEach(t => t.kill());
-      }
-    };
+    return () => ctx.revert();
   }, []);
 
   const workingHours = [
