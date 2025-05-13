@@ -78,7 +78,7 @@ export function PricingSection() {
       highlighted: true
     },
     {
-      title: 'Само брада',
+      title: 'Оформяне на брада',
       price: '20',
       image: 'https://images.pexels.com/photos/1319461/pexels-photo-1319461.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
       features: [
@@ -126,7 +126,7 @@ export function PricingSection() {
                 
                 <div className="flex items-baseline mb-4">
                   <span className="text-3xl font-bold text-white">{plan.price}</span>
-                  <span className="text-lg text-gray-300 ml-1">лв</span>
+                  <span className="text-lg text-gray-300 ml-1">лева</span>
                 </div>
                 
                 <ul className="space-y-3 mb-6">

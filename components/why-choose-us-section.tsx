@@ -15,9 +15,9 @@ if (typeof window !== 'undefined') {
 }
 
 export function WhyChooseUsSection() {
-  const sectionRef = useRef(null);
-  const imageRef = useRef(null);
-  const accordionRef = useRef(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
+  const accordionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -25,38 +25,39 @@ export function WhyChooseUsSection() {
     const accordion = accordionRef.current;
 
     if (section && image && accordion) {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: "top 70%",
-          toggleActions: "play none none reverse"
-        }
-      });
+      const ctx = gsap.context(() => {
+        const heading = section.querySelector('h2');
+        if (!heading) return;
 
-      tl.fromTo(
-        section.querySelector('h2'),
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.8 }
-      )
-      .fromTo(
-        image,
-        { opacity: 0, x: -30 },
-        { opacity: 1, x: 0, duration: 0.8 },
-        "-=0.4"
-      )
-      .fromTo(
-        accordion.children,
-        { opacity: 0, x: 30 },
-        { opacity: 1, x: 0, stagger: 0.2, duration: 0.6 },
-        "-=0.6"
-      );
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: "top 70%",
+            toggleActions: "play none none reverse"
+          }
+        });
+
+        tl.fromTo(
+          heading,
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.8 }
+        )
+        .fromTo(
+          image,
+          { opacity: 0, x: -30 },
+          { opacity: 1, x: 0, duration: 0.8 },
+          "-=0.4"
+        )
+        .fromTo(
+          accordion.children,
+          { opacity: 0, x: 30 },
+          { opacity: 1, x: 0, stagger: 0.2, duration: 0.6 },
+          "-=0.6"
+        );
+      }, section);
+
+      return () => ctx.revert();
     }
-
-    return () => {
-      if (typeof window !== 'undefined') {
-        ScrollTrigger.getAll().forEach(t => t.kill());
-      }
-    };
   }, []);
 
   const reasons = [
@@ -90,13 +91,16 @@ export function WhyChooseUsSection() {
         </h2>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-          <div ref={imageRef} className="relative">
+          <div 
+            ref={imageRef} 
+            className="relative overflow-hidden rounded-xl group"
+          >
             <img 
               src="https://images.pexels.com/photos/3998429/pexels-photo-3998429.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
               alt="Професионални бръснарски услуги" 
-              className="rounded-xl shadow-xl w-full object-cover object-center h-[400px] lg:h-[500px]"
+              className="rounded-xl shadow-xl w-full object-cover object-center h-[400px] lg:h-[500px] transition-transform duration-700 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-xl"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-xl transition-opacity duration-300 group-hover:opacity-40"></div>
           </div>
           
           <div ref={accordionRef}>
