@@ -43,15 +43,16 @@ function CountUp({ end, suffix = '' }: { end: number; suffix?: string }) {
 }
 
 export function AboutSection() {
-  const sectionRef = useRef(null);
-  const statsRef = useRef(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const statsRef = useRef<HTMLDivElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const section = sectionRef.current;
     const stats = statsRef.current;
+    const heading = section?.querySelector('h2');
 
-    if (section && stats) {
+    if (section && stats && heading) {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
@@ -62,7 +63,7 @@ export function AboutSection() {
       });
 
       tl.fromTo(
-        section.querySelector('h2'),
+        heading,
         { opacity: 0, y: 30 },
         { opacity: 1, y: 0, duration: 0.6 }
       )

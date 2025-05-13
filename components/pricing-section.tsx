@@ -13,19 +13,20 @@ if (typeof window !== 'undefined') {
 }
 
 export function PricingSection() {
-  const sectionRef = useRef(null);
-  const cardsRef = useRef(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const cardsRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const section = sectionRef.current;
     const cards = cardsRef.current;
+    const heading = section?.querySelector('h2');
 
-    if (section && cards) {
+    if (section && cards && heading) {
       // Reset any existing animations
-      gsap.killTweensOf([section.querySelector('h2'), cards.children]);
+      gsap.killTweensOf([heading, cards.children]);
       
       // Set initial states
-      gsap.set(section.querySelector('h2'), { opacity: 0, y: 20 });
+      gsap.set(heading, { opacity: 0, y: 20 });
       gsap.set(cards.children, { opacity: 0, y: 30 });
 
       // Create animation timeline
@@ -38,7 +39,7 @@ export function PricingSection() {
         }
       });
 
-      tl.to(section.querySelector('h2'), {
+      tl.to(heading, {
         opacity: 1,
         y: 0,
         duration: 0.6,
